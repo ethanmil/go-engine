@@ -4,36 +4,42 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/veandco/go-sdl2/sdl"
+
 	"github.com/ethanmil/go-engine/physics"
 )
 
-type element struct {
-	sprite         sprite
-	position       physics.Vector
-	speed          float64
-	angle          physics.Angle
-	collisionSpace []int
-	active         bool
+// Element -
+type Element struct {
+	Sprite         Sprite
+	Position       physics.Vector
+	Speed          float64
+	Angle          physics.Angle
+	CollisionSpace []int
+	Active         bool
 
 	// log helper
 	lastLogged time.Time
 }
 
-func (e *element) draw() {
-	if !e.active {
+// Draw -
+func (e *Element) Draw(texture *sdl.Texture, renderer *sdl.Renderer) {
+	if !e.Active {
 		return
 	}
 
-	e.sprite.draw(e.position, e.angle.GetDegrees(), renderer)
+	e.Sprite.Draw(e.Position, e.Angle.GetDegrees(), texture, renderer)
 }
 
-func (e *element) update() {
-	movement := e.angle.GetVector()
-	e.position.x += movement.x * e.speed * delta
-	e.position.y += movement.y * e.speed * delta
+// Update -
+func (e *Element) Update(delta float64) {
+	movement := e.Angle.GetVector()
+	e.Position.X += movement.X * e.Speed * delta
+	e.Position.Y += movement.Y * e.Speed * delta
 }
 
-func (e *element) print(every time.Duration) {
+// Print -
+func (e *Element) Print(every time.Duration) {
 	if time.Since(e.lastLogged) >= every {
 		e.lastLogged = time.Now()
 		println(fmt.Sprintf("element: %+v", e))

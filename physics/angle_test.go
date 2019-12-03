@@ -15,21 +15,21 @@ func TestNewAngle(t *testing.T) {
 
 func TestGetVector(t *testing.T) {
 	var a1 = NewAngle(math.Pi / 4)
-	if !(floatsEqual(a1.GetVector().x, math.Sqrt(2)/2)) {
-		t.Error("Error deriving vector's x value", a1.GetVector().x)
+	if !(floatsEqual(a1.GetVector().X, math.Sqrt(2)/2)) {
+		t.Error("Error deriving vector's x value", a1.GetVector().X)
 	}
 
-	if !(floatsEqual(a1.GetVector().y, math.Sqrt(2)/2)) {
-		t.Error("Error deriving vector's y value", a1.GetVector().y)
+	if !(floatsEqual(a1.GetVector().Y, math.Sqrt(2)/2)) {
+		t.Error("Error deriving vector's y value", a1.GetVector().Y)
 	}
 
 	var a2 = NewAngle(math.Pi / 2)
-	if !(floatsEqual(a2.GetVector().x, 0)) {
-		t.Error("Error deriving vector's x value", a2.GetVector().x)
+	if !(floatsEqual(a2.GetVector().X, 0)) {
+		t.Error("Error deriving vector's x value", a2.GetVector().X)
 	}
 
-	if !(floatsEqual(a2.GetVector().y, 1)) {
-		t.Error("Error deriving vector's y value", a2.GetVector().y)
+	if !(floatsEqual(a2.GetVector().Y, 1)) {
+		t.Error("Error deriving vector's y value", a2.GetVector().Y)
 	}
 }
 

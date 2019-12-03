@@ -9,8 +9,8 @@ func TestNewVector(t *testing.T) {
 	var v = NewVector(1, 2)
 
 	if !(v == Vector{
-		x: 1,
-		y: 2,
+		X: 1,
+		Y: 2,
 	}) {
 		t.Error("Error creating a vector", v)
 	}

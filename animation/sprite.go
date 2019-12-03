@@ -7,22 +7,24 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type sprite struct {
-	size  physics.Vector
-	chunk sdl.Rect
-	angle float64
+// Sprite -
+type Sprite struct {
+	Size  physics.Vector
+	Chunk sdl.Rect
+	Angle float64
 
 	// log helper
-	lastLogged time.Time
+	LastLogged time.Time
 }
 
-func (s *sprite) draw(position physics.Vector, angle float64, renderer *sdl.Renderer) {
+// Draw -
+func (s *Sprite) Draw(position physics.Vector, angle float64, texture *sdl.Texture, renderer *sdl.Renderer) {
 	renderer.CopyEx(
-		art,
-		&sdl.Rect{X: int32(s.chunk.X), Y: int32(s.chunk.Y), W: int32(s.size.x), H: int32(s.size.y)},
-		&sdl.Rect{X: int32(position.x), Y: int32(position.y), W: int32(s.chunk.W), H: int32(s.chunk.H)},
+		texture,
+		&sdl.Rect{X: int32(s.Chunk.X), Y: int32(s.Chunk.Y), W: int32(s.Size.X), H: int32(s.Size.Y)},
+		&sdl.Rect{X: int32(position.X), Y: int32(position.Y), W: int32(s.Chunk.W), H: int32(s.Chunk.H)},
 		angle,
-		&sdl.Point{X: int32(s.size.x / 2), Y: int32(s.size.y / 2)},
+		&sdl.Point{X: int32(s.Size.X / 2), Y: int32(s.Size.Y / 2)},
 		sdl.FLIP_NONE,
 	)
 }
