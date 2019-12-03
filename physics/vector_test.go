@@ -6,9 +6,9 @@ import (
 )
 
 func TestNewVector(t *testing.T) {
-	var v = newVector(1, 2)
+	var v = NewVector(1, 2)
 
-	if !(v == vector{
+	if !(v == Vector{
 		x: 1,
 		y: 2,
 	}) {
@@ -17,15 +17,15 @@ func TestNewVector(t *testing.T) {
 }
 
 func TestGetAngle(t *testing.T) {
-	var v1 = newVector(1, 1)
+	var v1 = NewVector(1, 1)
 
-	if !(v1.getAngle() == float64(math.Pi/4)) {
-		t.Error("Error calculating angle", v1.getAngle())
+	if !(v1.GetAngle() == float64(math.Pi/4)) {
+		t.Error("Error calculating angle", v1.GetAngle())
 	}
 
-	var v2 = newVector(0, 0)
+	var v2 = NewVector(0, 0)
 
-	if !(v2.getAngle() == float64(0)) {
-		t.Error("Error calculating angle", v2.getAngle())
+	if !(v2.GetAngle() == float64(0)) {
+		t.Error("Error calculating angle", v2.GetAngle())
 	}
 }

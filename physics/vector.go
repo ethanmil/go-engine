@@ -2,23 +2,27 @@ package physics
 
 import "math"
 
-type vector struct {
+// Vector -
+type Vector struct {
 	x float64
 	y float64
 }
 
-func newVector(x, y float64) vector {
-	return vector{
+// NewVector -
+func NewVector(x, y float64) Vector {
+	return Vector{
 		x: x,
 		y: y,
 	}
 }
 
-func (v *vector) reset() {
+// Reset -
+func (v *Vector) Reset() {
 	v.x = 0
 	v.y = 0
 }
 
-func (v *vector) getAngle() float64 {
+// GetAngle -
+func (v *Vector) GetAngle() float64 {
 	return math.Atan2(v.y, v.x)
 }

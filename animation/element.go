@@ -3,13 +3,15 @@ package animation
 import (
 	"fmt"
 	"time"
+
+	"github.com/ethanmil/go-engine/physics"
 )
 
 type element struct {
 	sprite         sprite
-	position       vector
+	position       physics.Vector
 	speed          float64
-	angle          angle
+	angle          physics.Angle
 	collisionSpace []int
 	active         bool
 
@@ -22,11 +24,11 @@ func (e *element) draw() {
 		return
 	}
 
-	e.sprite.draw(e.position, e.angle.getDegrees(), renderer)
+	e.sprite.draw(e.position, e.angle.GetDegrees(), renderer)
 }
 
 func (e *element) update() {
-	movement := e.angle.getVector()
+	movement := e.angle.GetVector()
 	e.position.x += movement.x * e.speed * delta
 	e.position.y += movement.y * e.speed * delta
 }

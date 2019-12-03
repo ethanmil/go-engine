@@ -3,11 +3,12 @@ package animation
 import (
 	"time"
 
+	"github.com/ethanmil/go-engine/physics"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
 type sprite struct {
-	size  physics.vector
+	size  physics.Vector
 	chunk sdl.Rect
 	angle float64
 
@@ -15,7 +16,7 @@ type sprite struct {
 	lastLogged time.Time
 }
 
-func (s *sprite) draw(position vector, angle float64, renderer *sdl.Renderer) {
+func (s *sprite) draw(position physics.Vector, angle float64, renderer *sdl.Renderer) {
 	renderer.CopyEx(
 		art,
 		&sdl.Rect{X: int32(s.chunk.X), Y: int32(s.chunk.Y), W: int32(s.size.x), H: int32(s.size.y)},

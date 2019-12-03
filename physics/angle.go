@@ -2,30 +2,27 @@ package physics
 
 import "math"
 
-type angle float64
+// Angle -
+type Angle float64
 
-func newAngle(radians float64) angle {
-	return angle(radians)
+// NewAngle -
+func NewAngle(radians float64) Angle {
+	return Angle(radians)
 }
 
-func (a angle) reset() {
-	a = angle(0)
+// Reset -
+func (a Angle) Reset() {
+	a = Angle(0)
 }
 
-func (a angle) getVector() (v vector) {
+// GetVector -
+func (a Angle) GetVector() (v Vector) {
 	v.x = math.Cos(float64(a))
 	v.y = math.Sin(float64(a))
 	return v
 }
 
-func (a angle) getDegrees() float64 {
+// GetDegrees -
+func (a Angle) GetDegrees() float64 {
 	return getDegrees(float64(a))
-}
-
-func getDegrees(radians float64) float64 {
-	return radians * (180 / math.Pi)
-}
-
-func getRadians(degrees float64) float64 {
-	return degrees / (180 / math.Pi)
 }
