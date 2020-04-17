@@ -1,12 +1,10 @@
-package physics_test
+package physics
 
 import (
 	"math"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	. "github.com/ethanmil/go-engine/physics"
 )
 
 var _ = Describe("Vector", func() {
@@ -15,8 +13,8 @@ var _ = Describe("Vector", func() {
 			vector := NewVector(1, 2)
 
 			Expect(vector).To(Equal(Vector{
-				X: 1,
-				Y: 2,
+				x: 1,
+				y: 2,
 			}))
 		})
 	})
@@ -42,8 +40,8 @@ var _ = Describe("Vector", func() {
 			vector.Reset()
 
 			Expect(vector).To(Equal(Vector{
-				X: 0,
-				Y: 0,
+				x: 0,
+				y: 0,
 			}))
 		})
 	})
