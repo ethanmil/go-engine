@@ -24,5 +24,5 @@ func (a Angle) GetVector() (v Vector) {
 
 // GetDegrees -
 func (a Angle) GetDegrees() float64 {
-	return getDegrees(float64(a))
+	return GetDegrees(float64(a))
 }

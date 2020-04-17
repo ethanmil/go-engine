@@ -1,54 +1,47 @@
-package physics
+package physics_test
 
 import (
 	"math"
-	"testing"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+
+	. "github.com/ethanmil/go-engine/physics"
 )
 
-func TestNewAngle(t *testing.T) {
-	var a = NewAngle(1)
+var _ = Describe("Angle", func() {
 
-	if !(a == Angle(1)) {
-		t.Error("Error creating an angle", a)
-	}
-}
+	Context("NewAngle", func() {
+		It("should build", func() {
+			angle := NewAngle(1)
 
-func TestGetVector(t *testing.T) {
-	var a1 = NewAngle(math.Pi / 4)
-	if !(floatsEqual(a1.GetVector().X, math.Sqrt(2)/2)) {
-		t.Error("Error deriving vector's x value", a1.GetVector().X)
-	}
+			Expect(angle).To(Equal(Angle(1)))
+		})
+	})
 
-	if !(floatsEqual(a1.GetVector().Y, math.Sqrt(2)/2)) {
-		t.Error("Error deriving vector's y value", a1.GetVector().Y)
-	}
+	Context("GetVector", func() {
+		It("45 degrees", func() {
+			angle := NewAngle(math.Pi / 4)
+			vector := angle.GetVector()
 
-	var a2 = NewAngle(math.Pi / 2)
-	if !(floatsEqual(a2.GetVector().X, 0)) {
-		t.Error("Error deriving vector's x value", a2.GetVector().X)
-	}
+			Expect(vector.X).Should(BeNumerically("~", math.Sqrt(2)/2))
+			Expect(vector.Y).Should(BeNumerically("~", math.Sqrt(2)/2))
+		})
 
-	if !(floatsEqual(a2.GetVector().Y, 1)) {
-		t.Error("Error deriving vector's y value", a2.GetVector().Y)
-	}
-}
+		It("90 degrees", func() {
+			angle := NewAngle(math.Pi / 2)
+			vector := angle.GetVector()
 
-func TestGetAngleDegrees(t *testing.T) {
-	var a = NewAngle(math.Pi / 2)
+			Expect(vector.X).Should(BeNumerically("~", 0))
+			Expect(vector.Y).Should(BeNumerically("~", 1))
+		})
+	})
 
-	if !(floatsEqual(a.GetDegrees(), 90)) {
-		t.Error("Error deriving angle's degree value", a.GetDegrees())
-	}
-}
+	Context("GetAngleDegrees", func() {
+		It("90 degrees", func() {
+			angle := NewAngle(math.Pi / 2)
 
-func TestGetDegrees(t *testing.T) {
-	if !(floatsEqual(getDegrees(math.Pi/2), 90)) {
-		t.Error("Error deriving vector's x value", getDegrees(math.Pi/2))
-	}
-}
-
-func TestGetRadians(t *testing.T) {
-	if !(floatsEqual(getRadians(90), math.Pi/2)) {
-		t.Error("Error deriving vector's x value", getRadians(90))
-	}
-}
+			Expect(angle.GetDegrees()).Should(BeNumerically("~", 90))
+		})
+	})
+})

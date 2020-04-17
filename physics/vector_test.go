@@ -1,31 +1,50 @@
-package physics
+package physics_test
 
 import (
 	"math"
-	"testing"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+
+	. "github.com/ethanmil/go-engine/physics"
 )
 
-func TestNewVector(t *testing.T) {
-	var v = NewVector(1, 2)
+var _ = Describe("Vector", func() {
+	Context("Builds", func() {
+		It("succeeds", func() {
+			vector := NewVector(1, 2)
 
-	if !(v == Vector{
-		X: 1,
-		Y: 2,
-	}) {
-		t.Error("Error creating a vector", v)
-	}
-}
+			Expect(vector).To(Equal(Vector{
+				X: 1,
+				Y: 2,
+			}))
+		})
+	})
 
-func TestGetAngle(t *testing.T) {
-	var v1 = NewVector(1, 1)
+	Context("GetAngle", func() {
+		It("1, 1", func() {
+			vector := NewVector(1, 1)
 
-	if !(v1.GetAngle() == float64(math.Pi/4)) {
-		t.Error("Error calculating angle", v1.GetAngle())
-	}
+			Expect(vector.GetAngle()).Should(BeNumerically("~", math.Pi/4))
+		})
 
-	var v2 = NewVector(0, 0)
+		It("0, 0", func() {
+			vector := NewVector(0, 0)
 
-	if !(v2.GetAngle() == float64(0)) {
-		t.Error("Error calculating angle", v2.GetAngle())
-	}
-}
+			Expect(vector.GetAngle()).Should(BeNumerically("~", 0))
+		})
+	})
+
+	Context("Reset", func() {
+		It("should succeed", func() {
+			vector := NewVector(1, 1)
+
+			vector.Reset()
+
+			Expect(vector).To(Equal(Vector{
+				X: 0,
+				Y: 0,
+			}))
+		})
+	})
+})
