@@ -13,8 +13,8 @@ var _ = Describe("Vector", func() {
 			vector := NewVector(1, 2)
 
 			Expect(vector).To(Equal(Vector{
-				x: 1,
-				y: 2,
+				X: 1,
+				Y: 2,
 			}))
 		})
 	})
@@ -40,8 +40,8 @@ var _ = Describe("Vector", func() {
 			vector.Reset()
 
 			Expect(vector).To(Equal(Vector{
-				x: 0,
-				y: 0,
+				X: 0,
+				Y: 0,
 			}))
 		})
 	})

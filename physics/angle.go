@@ -17,8 +17,8 @@ func (a Angle) Reset() {
 
 // GetVector -
 func (a Angle) GetVector() (v Vector) {
-	v.x = math.Cos(float64(a))
-	v.y = math.Sin(float64(a))
+	v.X = math.Cos(float64(a))
+	v.Y = math.Sin(float64(a))
 	return v
 }
 

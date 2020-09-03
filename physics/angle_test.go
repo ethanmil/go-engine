@@ -22,16 +22,16 @@ var _ = Describe("Angle", func() {
 			angle := NewAngle(math.Pi / 4)
 			vector := angle.GetVector()
 
-			Expect(vector.x).Should(BeNumerically("~", math.Sqrt(2)/2))
-			Expect(vector.y).Should(BeNumerically("~", math.Sqrt(2)/2))
+			Expect(vector.X).Should(BeNumerically("~", math.Sqrt(2)/2))
+			Expect(vector.Y).Should(BeNumerically("~", math.Sqrt(2)/2))
 		})
 
 		It("90 degrees", func() {
 			angle := NewAngle(math.Pi / 2)
 			vector := angle.GetVector()
 
-			Expect(vector.x).Should(BeNumerically("~", 0))
-			Expect(vector.y).Should(BeNumerically("~", 1))
+			Expect(vector.X).Should(BeNumerically("~", 0))
+			Expect(vector.Y).Should(BeNumerically("~", 1))
 		})
 	})
 
